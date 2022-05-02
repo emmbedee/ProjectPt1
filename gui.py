@@ -25,7 +25,7 @@ class GUI:
 
         # Frame for SAVE button.
         self.frame_save = Frame(self.window)
-        self.label_save = Label(self.frame_save, text='[None,None]', font=33)
+        self.label_save = Label(self.frame_save, text='Last entry: [None,None]', font=33)
         self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked, font=25)
         self.label_save.pack(pady=1, side='left')
         self.button_save.pack(pady=30)
