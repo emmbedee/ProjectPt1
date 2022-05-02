@@ -2,7 +2,9 @@ import csv
 
 
 def determine_grade(score):
-    if score >= 90:
+    if (score > 100) or (score < 0):
+        raise ValueError
+    elif score >= 90:
         grade = 'A'
     elif score >= 80:
         grade = 'B'
@@ -46,4 +48,6 @@ def export_file(iterable):
         writer.writerows(iterable)
 
 
-input_loop()
+# input_loop()
+
+print(determine_grade(-1))
