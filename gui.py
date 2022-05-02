@@ -25,7 +25,9 @@ class GUI:
 
         # Frame for SAVE button.
         self.frame_save = Frame(self.window)
+        self.label_save = Label(self.frame_save, text='[None,None]', font=33)
         self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked, font=25)
+        self.label_save.pack(pady=1, side='left')
         self.button_save.pack(pady=30)
         self.frame_save.pack()
 
@@ -54,6 +56,7 @@ class GUI:
             iterable = [name, determine_grade(check_score(score))]
             save_file(iterable)
             self.clear_input()
+            self.label_save.config(text=f'Last entry: [{iterable[0]},{iterable[1]}]')
 
     def clear_input(self):
         """
