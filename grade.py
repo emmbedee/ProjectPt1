@@ -1,6 +1,5 @@
 import csv
 import re
-from typing import Any
 
 
 def determine_grade(score) -> str:
