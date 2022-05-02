@@ -1,7 +1,8 @@
 from grade import *
 
+
 def main():
-    pass
+    input_loop()
 
 
 if __name__ == '__main__':
