@@ -1,8 +1,14 @@
 import csv
 import re
+from typing import Any
 
 
-def determine_grade(score):
+def determine_grade(score) -> str:
+    """
+    Function to determine letter grade from an int/float value.
+    :param score: int/float value.
+    :return: Letter grade.
+    """
     if score >= 90:
         grade = 'A'
     elif score >= 80:
@@ -16,7 +22,12 @@ def determine_grade(score):
     return grade
 
 
-def check_name(name):
+def check_name(name) -> bool | str:
+    """
+    Function to check STUDENT NAME user input by filtering any inputs that contain special characters or numbers.
+    :param name: A string representing a student's name.
+    :return: A stripped string of the students name.
+    """
     regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
     if name.strip().isdigit():
         return False
@@ -26,7 +37,12 @@ def check_name(name):
         return False
 
 
-def check_score(score):
+def check_score(score) -> bool | float:
+    """
+    Function to check STUDENT SCORE user input by filtering any inputs that are non-numeric or outside range (0-100 inclusive).
+    :param score: Numeric string between 0-100 (inclusive) representing a student's score.
+    :return: A float that is fit to be passed into the determine_grade function.
+    """
     if score.strip().isalpha():
         return False
     score = float(score)
@@ -36,7 +52,11 @@ def check_score(score):
         return score
 
 
-def save_file(iterable):
+def save_file(iterable) -> None:
+    """
+    Function to write a new row based on user input and execution of the clicked() function.
+    :param iterable: An iterable container containing the row to be written to the output file.
+    """
     with open('output.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(iterable)

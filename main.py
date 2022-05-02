@@ -3,9 +3,9 @@ from gui import *
 
 def main():
     window = Tk()
-    window.title('Grade Changer')  # Change the window title to 'Lab 10'.
-    window.geometry('250x180')  # Set its length to 250 and height to 180.
-    window.resizable(False, False)  # Make the window non-resizable.
+    window.title('Grade Changer')
+    window.geometry('250x180')
+    window.resizable(False, False)
     widgets = GUI(window)
     window.mainloop()
 

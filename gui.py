@@ -29,6 +29,12 @@ class GUI:
         self.frame_save.pack()
 
     def clicked(self):
+        """
+        Function executes when "SAVE" button is clicked by user:
+            Gets user input and check for errors.
+            If input is acceptable then the input is used to create/maintain a student grade .csv file.
+
+        """
         name = self.entry_name.get()
         score = self.entry_score.get()
 
@@ -49,5 +55,8 @@ class GUI:
             self.clear_input()
 
     def clear_input(self):
+        """
+        Function to simplify input clearing calls and reduce code clutter.
+        """
         self.entry_name.delete(0, END)
         self.entry_score.delete(0, END)
