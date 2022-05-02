@@ -19,13 +19,13 @@ class GUI:
         self.label_score = Label(self.frame_score, text='Score: ')
         self.entry_score = Entry(self.frame_score)
         self.label_score.pack(padx=5, side='left')
-        self.entry_score.pack(padx=5, side='left')
+        self.entry_score.pack(padx=16, side='left')
         self.frame_score.pack(anchor='w', pady=10)
 
         # Frame for SAVE button.
         self.frame_save = Frame(self.window)
         self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked)
-        self.button_save.pack(pady=15)
+        self.button_save.pack(pady=30)
         self.frame_save.pack()
 
     def clicked(self):
