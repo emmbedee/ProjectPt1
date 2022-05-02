@@ -1,9 +1,8 @@
 import csv
+import re
 
 
 def determine_grade(score):
-    if (score > 100) or (score < 0):
-        raise ValueError
     if score >= 90:
         grade = 'A'
     elif score >= 80:
@@ -17,29 +16,28 @@ def determine_grade(score):
     return grade
 
 
-def input_loop():
-    iterable = []
-    while True:
-        try:
-            name = input('Please enter student name: ')
-            final_score = input('Please enter student score: ')
-            if name.strip().isdigit():
-                raise TypeError
-            if final_score.strip().isalpha():
-                raise TypeError
-            final_score = int(final_score)
-            iterable.append(name)
-            iterable.append(determine_grade(final_score))
-        except TypeError:
-            print('Please enter student NAME and SCORE in appropriate input locations!')
-        except ValueError:
-            print('ValueError exception raised, SCORE input should be between 0-100!')
+def check_name(name):
+    regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+    if name.strip().isdigit():
+        return False
+    if (regex.search(name.strip())) is None:
+        return name
+    else:
+        return False
 
 
-def export_file(iterable):
-    with open('output.csv', 'w', newline='') as file:
+def check_score(score):
+    if score.strip().isalpha():
+        return False
+    score = int(score)
+    if (score > 100) or (score < 0):
+        return False
+    else:
+        return score
+
+
+def save_file(iterable):
+    with open('output.csv', 'a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerows(iterable)
+        writer.writerow(iterable)
 
-
-#input_loop()
