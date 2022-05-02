@@ -30,23 +30,25 @@ class GUI:
         self.frame_save.pack()
 
     def clicked(self):
-
-        if (self.entry_name.get().strip() == '') or (self.entry_score.get().strip()) == '':
-            messagebox.showwarning(title='Input Error', message='NAME or SCORE cannot be empty!')
-
         name = self.entry_name.get()
         score = self.entry_score.get()
 
-        if not check_name(name):
-            messagebox.showwarning(title='Input Error', message='You must enter a valid name without numbers or special '
-                                                              'characters.')
-        if not check_score(score):
+        if (name.strip() == '') or (score.strip() == ''):
+            messagebox.showwarning(title='Input Error', message='NAME or SCORE cannot be empty!')
+            self.clear_input()
+        elif not check_name(name):
+            messagebox.showwarning(title='Input Error',
+                                   message='You must enter a valid name without numbers or special '
+                                           'characters.')
+            self.clear_input()
+        elif not check_score(score):
             messagebox.showwarning(title='Input Error', message='You must enter a number between 0 and 100!')
+            self.clear_input()
+        else:
+            iterable = [name, determine_grade(check_score(score))]
+            save_file(iterable)
+            self.clear_input()
 
-        iterable = [name, determine_grade(check_score(score))]
-        print(iterable)
-        save_file(iterable)
-
+    def clear_input(self):
         self.entry_name.delete(0, END)
         self.entry_score.delete(0, END)
-

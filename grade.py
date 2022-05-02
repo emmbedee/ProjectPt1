@@ -29,7 +29,7 @@ def check_name(name):
 def check_score(score):
     if score.strip().isalpha():
         return False
-    score = int(score)
+    score = float(score)
     if (score > 100) or (score < 0):
         return False
     else:
