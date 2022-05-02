@@ -21,7 +21,7 @@ def check_name(name):
     if name.strip().isdigit():
         return False
     if (regex.search(name.strip())) is None:
-        return name
+        return name.strip()
     else:
         return False
 

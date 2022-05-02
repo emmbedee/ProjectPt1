@@ -1,7 +1,6 @@
 from tkinter import *
 from grade import *
 from tkinter import messagebox
-import csv
 
 
 class GUI:
@@ -25,7 +24,7 @@ class GUI:
 
         # Frame for SAVE button.
         self.frame_save = Frame(self.window)
-        self.button_save = Button(self.frame_save, text='EXPORT', command=self.clicked)
+        self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked)
         self.button_save.pack(pady=15)
         self.frame_save.pack()
 

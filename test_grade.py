@@ -13,6 +13,7 @@ class Test:
     def test_check_name(self):
         assert check_name('Amy') == 'Amy'
         assert check_name('amy') == 'amy'
+        assert check_name('               Amy') == 'Amy'
         assert check_name('Amy!') is False
         assert check_name('[@_!#$%^&*()<>?/\|}{~:]') is False
         assert check_name('1') is False
