@@ -23,13 +23,6 @@ class GUI:
         self.entry_score.pack(padx=16, side='left')
         self.frame_score.pack(anchor='w', pady=10)
 
-        # Frame for INPUT PREVIEW.
-        self.frame_view = Frame(self.window)
-        self.label_view = Label(self.frame_view, text='Input Preview: ', font=16)
-        self.text_view = Text(self.frame_view, height=5, width=30)
-        self.label_view.pack(padx=5, side='left')
-        self.text_view.pack(padx=16, side='left')
-
         # Frame for SAVE button.
         self.frame_save = Frame(self.window)
         self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked, font=25)
@@ -61,8 +54,6 @@ class GUI:
             iterable = [name, determine_grade(check_score(score))]
             save_file(iterable)
             self.clear_input()
-            self.text_view.insert(tkinter.END, name)
-
 
     def clear_input(self):
         """
