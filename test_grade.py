@@ -17,9 +17,3 @@ class Test:
         with pytest.raises(ValueError):
             determine_grade(-1)
             determine_grade(101)
-
-    @mock.patch('grade.input', create=True)
-    def test_input_loop(self, mocked_input):
-        output = ['Amy', 'A']
-        mocked_input.side_effect = ['Amy', '90']
-        assert input_loop() == output
