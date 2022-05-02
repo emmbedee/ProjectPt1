@@ -24,6 +24,7 @@ class Test:
 
     def test_check_score(self):
         assert check_score('1') == 1
+        assert check_score('                          1          ') == 1
         assert check_score('-15') is False
         assert check_score('101') is False
         assert check_score('Test') is False
