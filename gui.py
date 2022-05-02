@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 from grade import *
 from tkinter import messagebox
@@ -8,7 +9,7 @@ class GUI:
         self.window = window
         # Frame for STUDENT input.
         self.frame_name = Frame(self.window)
-        self.label_name = Label(self.frame_name, text='Student: ')
+        self.label_name = Label(self.frame_name, text='Student: ', font=25)
         self.entry_name = Entry(self.frame_name)
         self.label_name.pack(padx=5, side='left')
         self.entry_name.pack(padx=5, side='left')
@@ -16,15 +17,22 @@ class GUI:
 
         # Frame for SCORE input.
         self.frame_score = Frame(self.window)
-        self.label_score = Label(self.frame_score, text='Score: ')
+        self.label_score = Label(self.frame_score, text='Score: ', font=25)
         self.entry_score = Entry(self.frame_score)
         self.label_score.pack(padx=5, side='left')
         self.entry_score.pack(padx=16, side='left')
         self.frame_score.pack(anchor='w', pady=10)
 
+        # Frame for INPUT PREVIEW.
+        self.frame_view = Frame(self.window)
+        self.label_view = Label(self.frame_view, text='Input Preview: ', font=16)
+        self.text_view = Text(self.frame_view, height=5, width=30)
+        self.label_view.pack(padx=5, side='left')
+        self.text_view.pack(padx=16, side='left')
+
         # Frame for SAVE button.
         self.frame_save = Frame(self.window)
-        self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked)
+        self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked, font=25)
         self.button_save.pack(pady=30)
         self.frame_save.pack()
 
@@ -53,6 +61,8 @@ class GUI:
             iterable = [name, determine_grade(check_score(score))]
             save_file(iterable)
             self.clear_input()
+            self.text_view.insert(tkinter.END, name)
+
 
     def clear_input(self):
         """

@@ -28,7 +28,8 @@ def check_name(name) -> bool | str:
     :return: A stripped string of the students name.
     """
     regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
-    if name.strip().isdigit():
+    numbers = re.findall('[0-9]+', name)
+    if numbers:
         return False
     if (regex.search(name.strip())) is None:
         return name.strip()
