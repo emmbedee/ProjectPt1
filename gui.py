@@ -50,13 +50,13 @@ class GUI:
                                            'characters.')
             self.clear_input()
         elif not check_score(score):
-            messagebox.showwarning(title='Input Error', message='You must enter a number between 0 and 100!')
-            self.clear_input()
+            if check_score(score) == 0.0:
+                self.save_update(name, score)
+            else:
+                messagebox.showwarning(title='Input Error', message='You must enter a number between 0 and 100!')
+                self.clear_input()
         else:
-            iterable = [name, determine_grade(check_score(score))]
-            save_file(iterable)
-            self.clear_input()
-            self.label_save.config(text=f'Last entry: [{iterable[0]},{iterable[1]}]')
+            self.save_update(name, score)
 
     def clear_input(self):
         """
@@ -64,3 +64,15 @@ class GUI:
         """
         self.entry_name.delete(0, END)
         self.entry_score.delete(0, END)
+
+    def save_update(self, name, score):
+        """
+        Function to simplify csv save behavior and user interface "last entry" update.  Reduces clutter.
+        :param name: User input passed from NAME entry box.
+        :param score: User input passed from SCORE entry box.
+        :return: None.
+        """
+        iterable = [name, determine_grade(check_score(score))]
+        save_file(iterable)
+        self.clear_input()
+        self.label_save.config(text=f'Last entry: [{iterable[0]},{iterable[1]}]')

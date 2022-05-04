@@ -16,11 +16,6 @@ class Test:
         assert check_name('               Amy') == 'Amy'
         assert check_name('Amy!') is False
         assert check_name('[@_!#$%^&*()<>?/\|}{~:]') is False
-        assert check_name('1') is False
-
-        with pytest.raises(AttributeError):
-            check_name(0)
-            check_name(float(0))
 
     def test_check_score(self):
         assert check_score('1') == 1

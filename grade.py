@@ -60,4 +60,3 @@ def save_file(iterable) -> None:
     with open('output.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(iterable)
-
