@@ -27,7 +27,7 @@ class GUI:
         self.frame_save = Frame(self.window)
         self.label_save = Label(self.frame_save, text='Last entry: [None,None]', font=33)
         self.button_save = Button(self.frame_save, text='SAVE', command=self.clicked, font=25)
-        self.label_save.pack(pady=1, side='left')
+        self.label_save.pack(padx=5, side='left')
         self.button_save.pack(pady=30)
         self.frame_save.pack()
 
@@ -72,7 +72,7 @@ class GUI:
         :param score: User input passed from SCORE entry box.
         :return: None.
         """
-        iterable = [name, determine_grade(check_score(score))]
+        iterable = [name, determine_grade(check_score(score)), score]
         save_file(iterable)
         self.clear_input()
-        self.label_save.config(text=f'Last entry: [{iterable[0]},{iterable[1]}]')
+        self.label_save.config(text=f'Last entry: [{iterable[0]},{iterable[2]}, {iterable[1]}]')
